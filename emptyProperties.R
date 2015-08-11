@@ -1,5 +1,5 @@
 #this script sets if the web page has no more properties on it
-url = "http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ7"
+#url = "http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ7"
 
 empty.properties = function(url){
   html = htmlTreeParse(url,useInternalNodes = T)

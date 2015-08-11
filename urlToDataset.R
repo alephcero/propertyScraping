@@ -5,7 +5,7 @@ library(XML)
 library(httr)
 library(reshape2)
 
-url = "http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ1"
+#url = "http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ1"
 url.to.dataset = function(url){
   #Usando XML
   html = htmlTreeParse(url,useInternalNodes = T)
