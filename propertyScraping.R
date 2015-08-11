@@ -21,28 +21,34 @@ operaciones = unique(basesPosibles$operacion)
 tipoPropiedades = unique(basesPosibles$tipoPropiedad)
 urls = basesPosibles$url
 
+base = data.frame(direccion = NA,
+                  barrio = NA,
+                  metraje = NA,
+                  moneda = NA,
+                  precio = NA,
+                  operacion = NA,
+                  tipoPropiedad = NA,
+                  fecha = NA)
+
 for (i in operaciones) {
   for (j in tipoPropiedades){
     for (k in urls){
       for (l in 1:10) {
         #print(l)
+        print(paste(i,j,l,sep="-"))
         url = paste(k,l,sep="")
-        print(url)
-        
-        
         if (empty.properties(url)) {break}
-        
-        if (l==1){
-          base = url.to.dataset(url)
-        }
         base2 = url.to.dataset(url)
+        base2$operacion = i
+        base2$tipoPropiedad = j
+        base2$fecha = Sys.Date()
         base = rbind(base,base2)
         
       }  
     }
   }
 }
-
+base = base[-1,]
 
 #Funcion original
 for (i in 1:10000000) {
