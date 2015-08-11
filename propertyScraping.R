@@ -1,52 +1,86 @@
 #Zona prop
-#el conteo de paginas se acaba cuando aparece class="sin-resultado-msj"
-#<div class="sin-resultado-msj">
-#  <p class="titulo">
-#    Lo sentimos, no hemos encontrado propiedades con l…
-
-
-#Venta
-
-##Departamento
-#http://propiedades.zonaprop.com.ar/venta-departamentos-capital-federal/ncZ1_opZtipo-operacion-venta_lnZ3642_pnZ1
-
-##Casas
-#http://propiedades.zonaprop.com.ar/venta-casas-capital-federal/ncZ2_opZtipo-operacion-venta_lnZ3642_pnZ1
-
-##Ph
-#http://propiedades.zonaprop.com.ar/venta-ph-capital-federal/ncZ3_opZtipo-operacion-venta_lnZ3642_pnZ2
-
-
-#Alquiler
-
-##Departamento
-#http://propiedades.zonaprop.com.ar/alquiler-departamentos-capital-federal/ncZ1_opZtipo-operacion-alquiler_lnZ3642_pnZ2
-
-##Casas
-#http://propiedades.zonaprop.com.ar/alquiler-departamentos-capital-federal/ncZ2_opZtipo-operacion-alquiler_lnZ3642_pnZ1
-
-##Ph
-#http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ2
-
-#Alquiler ph 251 propiedaes
 
 rm(list=ls())
 
 source("urlToDataset.R")
 source("emptyProperties.R")
 
-for (i in 1:10) {
+basesPosibles = data.frame(operacion = c(rep("venta",3),rep("alquiler",3)),
+                           tipoPropiedad = rep(c("departamento","casa","ph"),2),
+                           url=c(
+                             "http://propiedades.zonaprop.com.ar/venta-departamentos-capital-federal/ncZ1_opZtipo-operacion-venta_lnZ3642_pnZ",
+                             "http://propiedades.zonaprop.com.ar/venta-casas-capital-federal/ncZ2_opZtipo-operacion-venta_lnZ3642_pnZ",
+                             "http://propiedades.zonaprop.com.ar/venta-ph-capital-federal/ncZ3_opZtipo-operacion-venta_lnZ3642_pnZ",
+                             "http://propiedades.zonaprop.com.ar/alquiler-departamentos-capital-federal/ncZ1_opZtipo-operacion-alquiler_lnZ3642_pnZ",
+                             "http://propiedades.zonaprop.com.ar/alquiler-casas-capital-federal/ncZ2_opZtipo-operacion-alquiler_lnZ3642_pnZ",
+                             "http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ"
+                             )
+                           )
+
+operaciones = unique(basesPosibles$operacion)
+tipoPropiedades = unique(basesPosibles$tipoPropiedad)
+urls = basesPosibles$url
+
+for (i in operaciones) {
+  for (j in tipoPropiedades){
+    for (k in urls){
+      for (l in 1:10) {
+        #print(l)
+        url = paste(k,l,sep="")
+        print(url)
+        
+        
+        if (empty.properties(url)) {break}
+        
+        if (l==1){
+          base = url.to.dataset(url)
+        }
+        base2 = url.to.dataset(url)
+        base = rbind(base,base2)
+        
+      }  
+    }
+  }
+}
+
+
+#Funcion original
+for (i in 1:10000000) {
   print(i)
-  alquiler.ph = paste("http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ",i,sep="")
+  #Alquiler PH
+  url = paste("http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ",i,sep="")
   
-  if (empty.properties(alquiler.ph)) {break}
+  if (empty.properties(url)) {break}
   
   if (i==1){
-    base = url.to.dataset(alquiler.ph)
+    base = url.to.dataset(url)
   }
-  base2 = url.to.dataset(alquiler.ph)
+  base2 = url.to.dataset(url)
   base = rbind(base,base2)
 
+  #Venta
+  
+  ##Departamento
+  #http://propiedades.zonaprop.com.ar/venta-departamentos-capital-federal/ncZ1_opZtipo-operacion-venta_lnZ3642_pnZ1
+  
+  ##Casas
+  #http://propiedades.zonaprop.com.ar/venta-casas-capital-federal/ncZ2_opZtipo-operacion-venta_lnZ3642_pnZ1
+  
+  ##Ph
+  #http://propiedades.zonaprop.com.ar/venta-ph-capital-federal/ncZ3_opZtipo-operacion-venta_lnZ3642_pnZ2
+  
+  
+  #Alquiler
+  
+  ##Departamento
+  #http://propiedades.zonaprop.com.ar/alquiler-departamentos-capital-federal/ncZ1_opZtipo-operacion-alquiler_lnZ3642_pnZ2
+  
+  ##Casas
+  #http://propiedades.zonaprop.com.ar/alquiler-departamentos-capital-federal/ncZ2_opZtipo-operacion-alquiler_lnZ3642_pnZ1
+  
+  ##Ph
+  #http://propiedades.zonaprop.com.ar/alquiler-ph-capital-federal/ncZ3_opZtipo-operacion-alquiler_lnZ3642_pnZ2
+  
 }
 
 
