@@ -1,4 +1,3 @@
-#ToDataset Regular
 
 #Esto me da todas las direcciones
 direcciones= xpathSApply(html,"//h2",xmlValue)
@@ -64,5 +63,3 @@ direcciones = colsplit(direcciones$direcciones," - ",c("direccion","barrio"))
 
 #armado de base final
 base=cbind(direcciones,data,precios)
-duplicados = duplicated(base[,c("direccion","metraje","moneda","precio")])
-base = base[!duplicados,]
