@@ -19,7 +19,7 @@ base = data.frame(direccion = NA,
 
 for (operacion in operaciones) {
   for (tipoPropiedad in tipoPropiedades){
-    for (k in 1:100) {
+    for (k in 1:10000000) {
       #debuging
       #k = 11  
       #operacion = operaciones[1]
