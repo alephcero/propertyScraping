@@ -47,3 +47,5 @@ for (operacion in operaciones) {
 }
 
 base = base[-1,]
+
+write.csv(base,"base.csv",row.names = FALSE)
