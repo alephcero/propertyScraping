@@ -50,7 +50,12 @@ for (operacion in operaciones) {
 base$moneda[grepl("pesos",base$moneda)] = "pesos"
 base$moneda[grepl("dolares",base$moneda)] = "dolares"
 base$moneda[grepl("consultar",base$moneda)] = NA
-base$moneda = factor(as.character(base$moneda))
+
+
+base = base %>%
+  mutate(moneda = factor(as.character(base$moneda))) %>%
+  mutate(metraje = as.integer(as.character(base$metraje))) %>%
+  mutate(precio = as.integer(as.character(base$precio)))
 
 base = base[-1,]
 
