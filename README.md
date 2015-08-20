@@ -13,4 +13,4 @@ This project intends to map the rent prices for meter squared in Buenos Aires ci
 - *rentMap*: taking the dataset with standarized neighbourhood's names, produces a map with the average rent price for meter squared
 
 
-![rentMapBA](https://github.com/alephcero/propertyScraping/blob/master/rentPrices.jpeg)
+![rentMapBA](https://github.com/alephcero/propertyScraping/blob/master/figs/rentPrices.jpeg)
