@@ -8,7 +8,7 @@ library(rgdal)
 library(sp)
 library(tmap)
 library(dplyr)
-library(outliers)
+
 #Loading shapes 
 if (!file.exists("maps/barrios.shp")){
   download.file("https://recursos-data.buenosaires.gob.ar/ckan2/barrios/barrios.zip","maps/barrios.zip",method = "wget")
