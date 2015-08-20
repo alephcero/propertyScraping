@@ -46,6 +46,12 @@ for (operacion in operaciones) {
   }
 }
 
+#Cleaning "moneda" variable, removing unknown prizes 
+base$moneda[grepl("pesos",base$moneda)] = "pesos"
+base$moneda[grepl("dolares",base$moneda)] = "dolares"
+base$moneda[grepl("consultar",base$moneda)] = NA
+base$moneda = factor(as.character(base$moneda))
+
 base = base[-1,]
 
 write.csv(base,"base.csv",row.names = FALSE)
